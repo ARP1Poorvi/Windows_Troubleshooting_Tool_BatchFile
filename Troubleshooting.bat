@@ -24,9 +24,13 @@ echo 12. Check for Updates
 echo 13. Optimize System Performance
 echo 14. Manage Startup Programs
 echo 15. View System Information
-echo 16. Exit
+echo 16. Manage Packages (Winget)
+echo 17. Defragment Disk
+echo 18. Check Disk Usage
+echo 19. Run Disk Cleanup
+echo 20. Exit
 
-set /p choice=Enter your choice (1-16):
+set /p choice=Enter your choice (1-20):
 
 if %choice%==1 goto CheckDisk
 if %choice%==2 goto WindowsDefenderScan
@@ -43,7 +47,11 @@ if %choice%==12 goto CheckForUpdates
 if %choice%==13 goto OptimizePerformance
 if %choice%==14 goto ManageStartup
 if %choice%==15 goto ViewSystemInfo
-if %choice%==16 goto Exit
+if %choice%==16 goto ManagePackages
+if %choice%==17 goto DefragmentDisk
+if %choice%==18 goto CheckDiskUsage
+if %choice%==19 goto RunDiskCleanup
+if %choice%==20 goto Exit
 
 :CheckDisk
 echo.
@@ -150,6 +158,27 @@ goto Start
 :ViewSystemInfo
 echo System Information...
 systeminfo
+goto Start
+
+:ManagePackages
+echo Managing Packages (Winget)...
+start winget
+goto Start
+
+:DefragmentDisk
+echo Defragmenting disk...
+defrag %systemdrive%
+goto Start
+
+:CheckDiskUsage
+echo Checking disk usage...
+dir /a /s %systemdrive% | sort /s /r > disk_usage.txt
+echo Disk usage report saved to disk_usage.txt
+goto Start
+
+:RunDiskCleanup
+echo Running Disk Cleanup...
+cleanmgr /sageset:65535 & cleanmgr /sagerun:65535
 goto Start
 
 :Exit
