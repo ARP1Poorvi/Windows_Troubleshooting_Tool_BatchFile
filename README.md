@@ -27,5 +27,3 @@ Note:
  * While this tool can address many common issues, it may not be able to resolve all problems. For complex or persistent issues, consider consulting a professional technician.
  * Always exercise caution when running scripts from unknown sources and ensure that you have a backup of your important data before making significant changes to your system.
 Enjoy using the Windows Troubleshooting Tool Batch File!
- * https://github.com/RendaniXcode/awsbootcamp-week-2
- * 
